@@ -29,8 +29,8 @@ Restoring a **CoBra** (Brașov, Romania) Z80 / ZX Spectrum-compatible mainboard 
 ## Using this repo
 
 ```sh
-git clone --recursive https://github.com/galitianu/cobra-repair
-cd cobra-repair
+git clone --recursive https://github.com/galitianu/cobra
+cd cobra
 git config core.hooksPath .githooks     # blocks photos with GPS metadata
 rom/reference/fetch.sh                  # official CoBra ROMs (not redistributed here)
 references/fetch.sh                     # core documentation (not redistributed here)

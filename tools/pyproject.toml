@@ -1,0 +1,9 @@
+[project]
+name = "cobra-tools"
+version = "0.1.0"
+description = "Helper scripts for the CoBra repair project"
+requires-python = ">=3.12"
+dependencies = ["z80", "numpy", "pyserial", "matplotlib"]
+
+[tool.uv]
+package = false

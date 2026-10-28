@@ -1,0 +1,6 @@
+[submodule "references/ceteras-CoBra"]
+	path = references/ceteras-CoBra
+	url = https://github.com/ceteras/CoBra
+[submodule "tools/rigol-mcp"]
+	path = tools/rigol-mcp
+	url = https://github.com/erebusnz/rigol-mcp

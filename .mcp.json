@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "rigol": {
+      "command": "uv",
+      "args": ["run", "--project", "tools/rigol-mcp", "rigol-mcp"],
+      "env": {
+        "RIGOL_USB": "1",
+        "RIGOL_ENABLE_SEND_RAW": "1",
+        "RIGOL_SCREENSHOT_DIR": "captures/scope/screenshots",
+        "RIGOL_WAVEFORM_DIR": "captures/scope/waveforms"
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+# OS / editor
+.DS_Store
+
+# Python / uv
+.venv/
+__pycache__/
+
+# Claude Code per-user state
+.claude/settings.local.json
+.claude/.cc-writes/
+
+# Assembler listings (rebuild with tools/rom/build.sh)
+*.lst
+
+# Raw scope memory exports: tens of MB each. Commit a screenshot or a reduced CSV instead.
+captures/scope/waveforms/
+
+# Third-party documentation: copyrighted, ~270 MB. Re-download with references/fetch.sh.
+# Our index (references/README.md) and the ceteras-CoBra submodule are committed.
+references/cobrasov/
+references/ldtlb-blog/
+
+# Third-party ROM images and disassemblies: re-download with rom/reference/fetch.sh.
+rom/reference/*
+!rom/reference/MANIFEST.md
+!rom/reference/fetch.sh

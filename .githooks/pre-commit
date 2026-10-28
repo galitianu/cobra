@@ -1,0 +1,13 @@
+#!/bin/sh
+# Refuse to commit photos that still carry GPS location or camera serial metadata.
+# Fix with: exiftool -all= -tagsfromfile @ -Orientation -overwrite_original <file>
+command -v exiftool >/dev/null || { echo "pre-commit: exiftool not installed (brew install exiftool)" >&2; exit 1; }
+bad=0
+for f in $(git diff --cached --name-only --diff-filter=AM | grep -iE '\.(jpe?g|png|heic|tiff?)$'); do
+    if exiftool -q -q -if '$GPSLatitude or $GPSPosition or $SerialNumber' -p '$FileName' "$f" | grep -q .; then
+        echo "pre-commit: $f has GPS/serial metadata. Strip it first:" >&2
+        echo "  exiftool -all= -tagsfromfile @ -Orientation -overwrite_original \"$f\"" >&2
+        bad=1
+    fi
+done
+exit $bad

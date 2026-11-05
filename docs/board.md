@@ -40,7 +40,7 @@ From the owner's photos on 2026-11-05 (`photos/20261105_*.jpg`). Positions are m
 - A 2716 in this 28-pin socket must sit at the end away from pin 1, which it does. **But its pin 1 must also face the socket's pin-1 end.**
 - The РФ5's printed triangle and bar marks are at the **opposite** end, away from the empty positions.
 - If those marks are pin 1, the chip is **in backwards**. A reversed 2716 has VCC and GND on the wrong pins, so the CPU could never have run the boot code. That alone would explain a screen showing only whatever the video circuit reads from uninitialised RAM.
-- **Socket verified 2026-11-05:** with the socket empty and the board on, both holes at the empty end read +5 V (pins 1 and 28). Under the opposite orientation one of them would have been GND. **U89 pin 1 is at the empty end, towards J8.** Still unverified: whether the РФ5's triangle marks its pin 1.
+- **Socket verified 2026-11-05:** with the socket empty and the board on, both holes at the empty end read +5 V (pins 1 and 28). Under the opposite orientation one of them would have been GND. **U89 pin 1 is at the empty end, towards J8.** Still unverified: which РФ5 marking is pin 1. **Correction (owner, 2026-11-05):** the chip also has a **gold metallization key at the opposite end** (the end that sat towards the empty socket positions / Y side). If that key marks pin 1, the РФ5 was inserted **correctly**, and the printed ◄ is just a factory mark. Resolve by testing an AT28C16 copy.
 - **Status:** the socket is resolved. The chip-side pin-1 mark is pending. Don't power the board with this chip fitted until it is resolved. The AT28C16 test ROMs (clear notch) make the question moot for testing.
 
 ## Power connectors

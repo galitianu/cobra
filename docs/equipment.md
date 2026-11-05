@@ -50,6 +50,6 @@ Optional. It can be a remote host for the scope and Pico, play `.tap` audio into
 ## Shopping list (only when needed)
 
 - 3–4× **CD74HC4050** (DIP-16) for the Pico logic analyser front end.
-- A **USB composite capture card** (any cheap UVC "EasyCap-style" or HDMI capture with a composite converter), so the agent can see the screen.
+- A **UVC video capture path**, so the agent can see the screen. Tried 2026-11-05: the owner's **Pinnacle "500-USB" (USB ID 2304:0213)** is Windows-only (no macOS/Linux driver, and not a UVC camera). Recommended: a **MacroSilicon MS2109/MS2130 USB HDMI capture dongle** (UVC, works on macOS without drivers) plus a cheap **composite (AV/RCA) to HDMI converter** that accepts PAL. The CoBra's 50 Hz progressive ("288p") composite is accepted by most such converters, but not all.
 - A **UV EPROM eraser**, only if we ever want to rewrite the РФ5.
 - 0.1 µF ceramic capacitors and a 4164 or two as spares, once we know the DRAM type.

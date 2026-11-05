@@ -4,7 +4,8 @@ Work through the phases in order. Each phase has a clear exit test. Don't skip a
 
 ## Status
 
-- **Current phase:** 4 (RAM and video). Phases 0–2 basics done 2026-11-05: PSU OK (−5 V high but unused by DRAM), CPU clock/reset/control OK, CPU running, video alive (rolls vertically).
+- **Current phase:** 4 (RAM and video). **Paused 2026-11-05**; see journal "Next, when we resume".
+- **Fitted:** 136 pF (2 × 68 pF) U36/3 → GND, 2026-11-05. The startup map now appears to hold, but the RAM test still ends with an impossible report (corrupted execution under heavy RAM activity). Phases 0–2 basics done 2026-11-05: PSU OK (−5 V high but unused by DRAM), CPU clock/reset/control OK, CPU running, video alive (rolls vertically).
 - **Board config:** original ITCI PCB 921442431 Rev A, 64K/80K-modified: 8× MMN4164 (bank 3) + 8× КР565РУ6 (video bank 1), **single +5 V DRAM**; MMN 80CPU; КР580ВВ55А; BASIC = 8× MMN2616; no FDC. Details in [board.md](board.md).
 - **Ruled out:** boot EPROM contents (РФ5 reads stable and is a valid 80K boot)
 - **Confirmed (2026-11-05):** (a) the РФ5 boot image's `LD D,83h` fails on this MMN 80CPU, so FIX0 (`LD A,83h`) is required; (b) the **power-on reset is too short for the slow-ramping AT PSU**: the CPU starts in a random state, and a manual C15 short gives a clean reset; (c) diag01 BORDER works after a clean reset, so CPU/ROM/IO/8255/border are OK.

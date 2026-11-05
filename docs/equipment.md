@@ -47,24 +47,24 @@ See [procedures/programming.md](procedures/programming.md) for exact commands.
 
 Optional. It can be a remote host for the scope and Pico, play `.tap` audio into the EAR input once the machine boots, or run sigrok/PulseView. It has the same 3.3 V GPIO restriction as the Pico.
 
-## Shopping list (only when needed)
+## Shopping list
 
-**Order now (2026-11-05), for the fixes found on day 1:**
+**To order during the break (updated 2026-11-05 evening).** The owner already has: 100 nF (104) ceramics, 68 pF ceramics (2 used on U36/3), 100 Ω resistors.
 
-| Part | Qty | For |
-|---|---|---|
-| Ceramic capacitor **150 pF** (code 151), C0G/NP0, 50 V, THT | 5 | U36/3 → GND timing fix (BA7 vs RFSH), cobrasov-documented |
-| Ceramic capacitors 100 pF (101) and 220 pF (221), C0G | 5 each | timing alternatives |
-| Tactile push button, THT | 2 | proper "COBRA RESET" (discharge C15) |
-| Resistor 100 Ω ¼ W | 5 | in series with the reset button |
-| Electrolytic 47 µF and 100 µF, ≥ 16 V | 2 each | longer power-on reset for the slow AT PSU |
-| Zilog Z84C0006PEG | 1–2 | optional spare CPU (current one appears healthy) |
+| Priority | Part | Qty | For |
+|---|---|---|---|
+| 1 | **IC test clips**: DIP-40 (Z80/8255), DIP-16 and DIP-14 | 1 each | probes clip on securely; no more slipping off chip legs |
+| 1 | **Mini-grabber probe tips / micro hooks** for the scope probes | 4 | same |
+| 1 | **CD74HC4050** (DIP-16) | 4 | 24-channel Pico logic analyser front end (5 V → 3.3 V); needed to see the whole data/address bus during the RAM-corruption hunt |
+| 1 | **MacroSilicon MS2109 (or MS2130) USB-HDMI capture dongle** + a **composite (AV/RCA) → HDMI converter that accepts PAL** | 1 + 1 | the agent sees the CoBra screen directly (UVC: works on macOS with no driver) |
+| 2 | **Tactile push button**, THT | 2 | proper "COBRA RESET" (button + 100 Ω across C15) |
+| 2 | **Electrolytic 47 µF and 100 µF**, ≥ 16 V | 2 each | longer power-on reset for the slow AT PSU (parallel to C15) |
+| 2 | **Ceramic C0G 100 pF (101), 150 pF (151), 220 pF (221)** | 5 each | timing tweaks (U36/3 now has 136 pF; cobrasov's delay caps CCC/C49/RAS may need tuning) |
+| 3 | Zilog **Z84C0006PEG** | 1–2 | optional spare CPU (the current one appears healthy) |
 
-The owner has **100 nF (code 104) ceramics**. Those are for decoupling only; never use them for the U36 timing fix.
+Avoid "EasyCap"-style composite USB sticks (UTV007/STK1160 chips, Pinnacle 500-USB): no macOS driver. Buy from TME, Mouser, DigiKey or Farnell where possible.
 
 **Later / optional:**
 
-- 3–4× **CD74HC4050** (DIP-16) for the Pico logic analyser front end.
-- A **UVC video capture path**, so the agent can see the screen. Tried 2026-11-05: the owner's **Pinnacle "500-USB" (USB ID 2304:0213)** is Windows-only (no macOS/Linux driver, and not a UVC camera). Recommended: a **MacroSilicon MS2109/MS2130 USB HDMI capture dongle** (UVC, works on macOS without drivers) plus a cheap **composite (AV/RCA) to HDMI converter** that accepts PAL. The CoBra's 50 Hz progressive ("288p") composite is accepted by most such converters, but not all.
 - A **UV EPROM eraser**, only if we ever want to rewrite the РФ5.
 - 0.1 µF ceramic capacitors and a 4164 or two as spares, once we know the DRAM type.

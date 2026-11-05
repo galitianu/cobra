@@ -7,7 +7,7 @@ Work through the phases in order. Each phase has a clear exit test. Don't skip a
 - **Current phase:** 3 (known-good ROMs). Phases 0–2 basics done 2026-11-05: PSU OK (−5 V high but unused by DRAM), CPU clock/reset/control OK, CPU running, video alive (rolls vertically).
 - **Board config:** original ITCI PCB 921442431 Rev A, 64K/80K-modified: 8× MMN4164 (bank 3) + 8× КР565РУ6 (video bank 1), **single +5 V DRAM**; MMN 80CPU; КР580ВВ55А; BASIC = 8× MMN2616; no FDC. Details in [board.md](board.md).
 - **Ruled out:** boot EPROM contents (РФ5 reads stable and is a valid 80K boot)
-- **Suspects:** ⚠ **boot ROM possibly inserted backwards** (board.md); resolve before powering with it. PSU −5 V at −7.03 V unloaded is now low priority (DRAM doesn't use −5 V).
+- **Suspects:** the CPU fetches from the boot ROM for only ~1.5 ms after power-on, then runs away (also with a fresh AT28C16 copy). **Data bus or ROM address bus integrity** is the prime suspect; next: scope the Z80 data pins for stuck or contended lines. PSU −5 V at −7 V is low priority.
 
 ## Phase 0: Inventory (no power needed)
 

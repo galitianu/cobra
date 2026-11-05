@@ -483,7 +483,8 @@ Sources: REV02, LDT.
 
 Source: HWM p.35–38.
 
-- **J9 power**: 1 +12 V, 2 GND, 3 +5 V, 4 −5 V, 5 GND.
+- **J9 power**: 1 +12 V, 2 GND, 3 +5 V, 4 −5 V, 5 GND. J9 is a **5-pin DIN socket**, part 303608 (HWM p.29 parts list, p.33 "DIN 5 pin connector (303608)", p.37 pinout). **J3 (aux audio) and J4 (tape) use the same DIN socket type**, so the PSU plug physically fits all three. Plugging it into J3/J4 would put +12 V into the audio circuits.
+  - On a standard 180° 5-pin DIN, pin 2 is the **centre** pin of the arc, opposite the key notch. Pins 1 and 3 are the two **end** pins. Pin 4 sits between 1 and 2, and pin 5 between 2 and 3. The arc reads 1-4-2-5-3, and the left/right mirror depends on which side you view from. So on J9: centre = GND, the ends are +12 V and +5 V, −5 V is next to the +12 V end, and GND is next to the +5 V end. (UNVERIFIED that 303608 is the 180° variant rather than 240°; check on the board.)
 - **J1 video**: 1 VVM, 2 GND, 3 R, 4 G, 5 B, 6 I, 7 composite (mono), 8 +sync, 9 −sync.
 - **J7 keyboard (2×10)**:
   - a-row: 2 VCC, 3 DIF (speaker), 4 KA8, 5 KA10, 6 KA12, 7 KA14, 8 K4, 9 K2, 10 K0.

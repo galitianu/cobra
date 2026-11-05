@@ -8,6 +8,7 @@ The original CoBra uses **4116 DRAMs, which need three supplies**: +5 V, +12 V a
 - Rated loads: +5 V 3 A, +12 V 0.3 A, −5 V 50 mA. +5 V must be within ±0.25 V.
 - **With 4116s fitted, −5 V must be present before or with +12 V and +5 V**, and must not disappear while they are up. 4116s without −5 V are destroyed.
 - **Never plug or unplug J9 while the PSU is on.**
+- **J9 (power), J3 (audio) and J4 (tape) are identical 5-pin DIN sockets.** The PSU plug fits all three. Confirm which one is J9 (silkscreen, or a photo checked by the agent) before plugging in. Mark the power socket and plug with tape.
 - **A 4164 in a socket wired for 4116 gets +12 V on its supply pin (pin 8) and is destroyed.** Never fit or swap a DRAM until we have measured that socket's pins 8, 9 and 1.
 
 ## General rules

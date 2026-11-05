@@ -8,7 +8,11 @@ Work through the phases in order. Each phase has a clear exit test. Don't skip a
 - **Board config:** original ITCI PCB 921442431 Rev A, 64K/80K-modified: 8× MMN4164 (bank 3) + 8× КР565РУ6 (video bank 1), **single +5 V DRAM**; MMN 80CPU; КР580ВВ55А; BASIC = 8× MMN2616; no FDC. Details in [board.md](board.md).
 - **Ruled out:** boot EPROM contents (РФ5 reads stable and is a valid 80K boot)
 - **Confirmed (2026-11-05):** (a) the РФ5 boot image's `LD D,83h` fails on this MMN 80CPU, so FIX0 (`LD A,83h`) is required; (b) the **power-on reset is too short for the slow-ramping AT PSU**: the CPU starts in a random state, and a manual C15 short gives a clean reset; (c) diag01 BORDER works after a clean reset, so CPU/ROM/IO/8255/border are OK.
-- **Suspects now:** **the CPU↔video-RAM access path.** diag03 RAM test: region 1 (video RAM) fails at C0xxh with all bits wrong (reads return FFh). RAM0 not tested yet (the test stops at the first failure). Next: a scope-loop ROM hammering C000h, then scope CS1/NCS1, /WAIT, U76, video /WE and /CAS. Also the daughterboard (80K mod) logic.
+- **Suspects now:**
+  1. **U36 loses the startup map during heavy RAM activity** (boot /CE goes high mid-test). Likely BA7 vs RFSH timing; documented fix: 150 pF U36/3→GND.
+  2. **CPU↔video-RAM access** (diag03: reads FFh at C000).
+  3. **Power-on reset** too short for the AT PSU; needs a manual C15 discharge. Fix: reset button + larger C15.
+  See the journal 2026-11-05 "Next".
 
 ## Phase 0: Inventory (no power needed)
 

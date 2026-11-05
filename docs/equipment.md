@@ -49,6 +49,21 @@ Optional. It can be a remote host for the scope and Pico, play `.tap` audio into
 
 ## Shopping list (only when needed)
 
+**Order now (2026-11-05), for the fixes found on day 1:**
+
+| Part | Qty | For |
+|---|---|---|
+| Ceramic capacitor **150 pF** (code 151), C0G/NP0, 50 V, THT | 5 | U36/3 → GND timing fix (BA7 vs RFSH), cobrasov-documented |
+| Ceramic capacitors 100 pF (101) and 220 pF (221), C0G | 5 each | timing alternatives |
+| Tactile push button, THT | 2 | proper "COBRA RESET" (discharge C15) |
+| Resistor 100 Ω ¼ W | 5 | in series with the reset button |
+| Electrolytic 47 µF and 100 µF, ≥ 16 V | 2 each | longer power-on reset for the slow AT PSU |
+| Zilog Z84C0006PEG | 1–2 | optional spare CPU (current one appears healthy) |
+
+The owner has **100 nF (code 104) ceramics**. Those are for decoupling only; never use them for the U36 timing fix.
+
+**Later / optional:**
+
 - 3–4× **CD74HC4050** (DIP-16) for the Pico logic analyser front end.
 - A **UVC video capture path**, so the agent can see the screen. Tried 2026-11-05: the owner's **Pinnacle "500-USB" (USB ID 2304:0213)** is Windows-only (no macOS/Linux driver, and not a UVC camera). Recommended: a **MacroSilicon MS2109/MS2130 USB HDMI capture dongle** (UVC, works on macOS without drivers) plus a cheap **composite (AV/RCA) to HDMI converter** that accepts PAL. The CoBra's 50 Hz progressive ("288p") composite is accepted by most such converters, but not all.
 - A **UV EPROM eraser**, only if we ever want to rewrite the РФ5.

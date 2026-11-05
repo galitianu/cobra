@@ -4,7 +4,7 @@ Work through the phases in order. Each phase has a clear exit test. Don't skip a
 
 ## Status
 
-- **Current phase:** 0 (inventory)
+- **Current phase:** 3 (known-good ROMs). Phases 0–2 basics done 2026-11-05: PSU OK (−5 V high but unused by DRAM), CPU clock/reset/control OK, CPU running, video alive (rolls vertically).
 - **Board config:** original ITCI PCB 921442431 Rev A, 64K/80K-modified: 8× MMN4164 (bank 3) + 8× КР565РУ6 (video bank 1), **single +5 V DRAM**; MMN 80CPU; КР580ВВ55А; BASIC = 8× MMN2616; no FDC. Details in [board.md](board.md).
 - **Ruled out:** boot EPROM contents (РФ5 reads stable and is a valid 80K boot)
 - **Suspects:** ⚠ **boot ROM possibly inserted backwards** (board.md); resolve before powering with it. PSU −5 V at −7.03 V unloaded is now low priority (DRAM doesn't use −5 V).
@@ -80,7 +80,7 @@ Using the original РФ5:
 
 Rank and update these as evidence arrives.
 
-0. **Boot ROM in backwards.** The placement drawing puts U89 pin 1 at the end with the empty socket positions; the РФ5's pin-1 marks point the other way. If confirmed, the CPU never ran boot code and the "blank characters" are just uninitialised video RAM. Pending: confirm the РФ5 pin-1 marking and the socket's pin 1.
+0. **Boot ROM in backwards (LEADING).** Socket orientation confirmed electrically on 2026-11-05: pin 1 is at the empty end, and the РФ5's marks faced away. Test: AT28C16 with the exact РФ5 image, inserted correctly. The placement drawing puts U89 pin 1 at the end with the empty socket positions; the РФ5's pin-1 marks point the other way. If confirmed, the CPU never ran boot code and the "blank characters" are just uninitialised video RAM. Pending: confirm the РФ5 pin-1 marking and the socket's pin 1.
 1. **The ROM's first instruction is `LD D,83h`, not `LD A,83h`.** If this board's Z80 doesn't power up with A bit 7 = 1, R7 = 0. Once NPOR rises (~20 ms), the boot EPROM drops out of the map, partway through the screen clear: a partly blank screen, then a hang. **Cheap test: AT28C16 #1 = `boot80k_rf5_fix0`.** Note that the cobrasov reference image has `LD A,83h`.
 2. **Bank #0 DRAM / 64K-bank fault.** The 80K boot first uses bank #0 right after the screen clear (copying the ROM to 8000h, then the first PUSH at 0096h). A blank screen and no logo fits this well.
 3. **Power problem:** missing −5 V / +12 V for 4116s, bad sequencing, or a marginal +5 V from the home-made PSU.

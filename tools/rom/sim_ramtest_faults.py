@@ -33,7 +33,9 @@ def run(desc, fault, seconds=45):
     region = 0
     while s[0][0] == "W" and s[0][1] < 0.5:
         region += 1
-        s = s[2:]
+        s = s[2:] if s[1][1] < 1 else s[1:]  # last flash: keep the long black gap
+    while s[0][0] == "B":
+        s = s[1:]
     bits = "".join("1" if d > 0.8 else "0" for c, d in s if c == "W")[:16]
     print(f"{desc}: region {region}, bad bits {int(bits[:8], 2):02X}h, address {int(bits[8:], 2):02X}xxh")
 

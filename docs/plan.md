@@ -7,7 +7,7 @@ Work through the phases in order. Each phase has a clear exit test. Don't skip a
 - **Current phase:** 0 (inventory)
 - **Board config:** unknown (4116 or 4164 DRAM? 64K/80K mod? FDC fitted? which BASIC EPROM set? which socket holds the boot ROM?)
 - **Ruled out:** boot EPROM contents (РФ5 reads stable and is a valid 80K boot)
-- **Suspects:** nothing yet
+- **Suspects:** nothing on the board yet. PSU −5 V reads −7.03 V unloaded; resolve before connecting the board.
 
 ## Phase 0: Inventory (no power needed)
 
@@ -22,7 +22,8 @@ Goal: know exactly what we are working on.
 - [ ] Look for the known original-PCB layout fixes ([hardware.md §13](hardware.md)): U36/1 to LO6 (critical for startup), U83 pins 6/7 to GND, the I-signal fix, and the BRIGHT diodes. Also look for mod wiring: a 7411 or diode gates, bodge wires around U35/U36/U52/U55/U76.
 - [ ] Visual inspection: burnt parts, bulging caps, corroded or broken traces, bent pins under chips, sockets with green corrosion, previous repair work.
 - [x] PSU description: the owner built it from a Baby AT PC PSU, wired to a DIN plug. Worked a few years ago.
-- [ ] **PSU test, off the board:** measure every pin of the DIN plug with the multimeter, map the pins to J9 (1 +12, 2 GND, 3 +5, 4 −5, 5 GND), and check the levels. Look over the PSU for bulging caps or a burnt smell, and check the fan.
+- [x] **PSU test, off the board** (2026-11-05, done with the scope as voltmeter): plug wiring correct; +12 = 11.60 V, +5 = 5.16 V, **−5 = −7.03 V (out of range, unloaded)**; no −12 V on any pin. Original task: measure every pin of the DIN plug with the multimeter, map the pins to J9 (1 +12, 2 GND, 3 +5, 4 −5, 5 GND), and check the levels. Look over the PSU for bulging caps or a burnt smell, and check the fan.
+- [ ] **−5 V under load, off the board:** check whether −7 V comes back to about −5 V with a load on −5 V (and on +5 V). If not, add a 7905/79L05 regulator, or confirm the board doesn't need −5 V (4164 DRAM).
 - [ ] PSU loaded test on the board, with the scope on the rails (Phase 1).
 - [ ] Exact description of the symptom: border colour, uniform screen vs grid of cells, what kind of display/TV and connection (RF / composite / RGB), whether anything changes when holding keys at power-up, and whether a keyboard is connected at all.
 

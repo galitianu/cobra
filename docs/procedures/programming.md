@@ -27,10 +27,12 @@ minipro -p AT28C16@DIP24 -y -o vcc=4.5 -m image.bin           # verify at 4.5 V 
 
 | Chip | Content |
 |---|---|
-| AT28C16 #1 | `rom/custom/boot80k_rf5_fix0.bin`: the РФ5 image with only byte 0 changed, from `16` (`LD D,83h`) to `3E` (`LD A,83h`). Tests hypothesis #1 in [plan.md](../plan.md). |
+| AT28C16 #1 | was COPY (exact РФ5 image); **now `diag04_ramtest_ram_first`** (2026-11-05) |
 | AT28C16 #2 | `diag01_border` |
-| AT28C16 #3 | `diag02_nop` |
-| AT28C16 #4 | spare: RAM test ROM / cobrasov test ROMs |
+| AT28C16 #3 | `boot80k_rf5_fix0` (`LD A,83h`), **the boot ROM this board needs** |
+| AT28C16 #4 | `diag03_ramtest` |
+
+All images are in `rom/`; any chip can be rewritten in seconds.
 
 ## К573РФ5 (original Soviet 2716)
 
